@@ -121,5 +121,11 @@ export class HousingService {
     return this.housingLocationList.filter((housingLocation) => housingLocation.name.toLowerCase().includes(name.toLowerCase()));
   }
 
+  submitApplication(firstName: string, lastName: string, email: string) {
+    console.log(
+      `Homes application received: firstName: ${firstName}, lastName: ${lastName}, email: ${email}`
+    );
+  }
+
   constructor() { }
 }
