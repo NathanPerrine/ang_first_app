@@ -31,11 +31,16 @@ export class HomeComponent {
       this.filteredLocationList = this.housingLocationList;
       return;
     }
-    this.filteredLocationList = this.housingService.getHousingLocationByCity(text)
+    // this.filteredLocationList = this.housingService.getHousingLocationByCity(text)
+    this.housingService.getHousingLocationByCity(text).then((housingLocationList: HousingLocation[]) => {
+      this.filteredLocationList = housingLocationList;
+    })
   };
 
   constructor() {
-    this.housingLocationList = this.housingService.getAllHousingLocations();
-    this.filteredLocationList = this.housingLocationList;
+    this.housingService.getAllHousingLocations().then((housingLocationList: HousingLocation[]) => {
+      this.housingLocationList = housingLocationList;
+      this.filteredLocationList = housingLocationList;
+    });
   }
 }
